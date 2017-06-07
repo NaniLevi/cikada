@@ -1,0 +1,117 @@
+@import "mixins";
+@import "custom-mixins";
+@import "variables";
+
+%bx-sh {
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+%clearfix{
+    &:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+
+@include cicada(item, council-card-avatar);
+
+.container {
+    margin: 0 auto;
+}
+
+.council {
+    // .item {
+    //     margin: 7px 7px;
+    // }
+    padding: 20px 0;
+    @include font-func($font-family, 16px, #333, 700, 1.48);
+    @extend %clearfix;
+    // @include cicada(council-card, council-card-avatar);
+    &-card {
+        text-align: center;
+        border-radius: 3px;
+        background: $bgc;
+        margin: 7px 7px;
+        padding: 20px 10px;
+        @extend %bx-sh;
+        // @include mq("tablet-p",max) {
+        //     background: red; 
+        // }
+        &-avatar {
+            border: 2px solid $bc;
+            width: $psz;
+            height: $psz;
+            overflow: hidden;
+            margin: 0;
+            @include push--auto;
+            // border-radius: 50%;
+            @extend %bx-sh;
+            border-radius: 80% 59% 67% 75%;
+            transform: 5deg;
+            -webkit-transform: 5deg;
+            -moz-transform: 5deg;
+            -ms-transform: 5deg;
+            -o-transform: 5deg;
+            transition: all 1s;
+            &:hover {
+                border-radius: 53% 77% 60% 80%;
+                transform: 1deg;
+                -webkit-transform: 1deg;
+                -moz-transform: 1deg;
+                -ms-transform: 1deg;
+                -o-transform: 1deg;
+                transition: all 1s;
+            }
+            // @include cicada(".council-card", ".council-card-avatar");
+            // transition: all .2s ease-in-out;
+            img {
+                display: block;
+                min-width: 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        &-descr {
+            &-name{
+                font-weight: bold;
+                color: darken($bc,50%);
+                font-size: 0.9em;
+                line-height: 1.48;
+                padding: 10px;
+            }
+            &-position{
+                padding: 10px;
+                font-size: 0.8em;
+                &:before{
+                    display: block;
+                    width: 30%;
+                    margin: 0 auto;
+                    content: '';
+                    height: 3px;
+                    background: $cl;
+                    margin-bottom: 20px;
+                }
+            }
+            
+        }
+    }
+}
+
+// @include mq("phone-p",max) {
+//     .col-2 { width: 50%; }
+// }
+
+@include grid(12);
+@include responsive-grid(12);
+
+// @include cicada(".council-card", ".council-card-avatar");
+
+// @include cicada(.council-card, img);
+
+// .cicada {
+//     @include border-radius(random(100) + % random(100) + % random(100) + % random(100) + %);
+//     @include transform(random(20) - 10 + deg);
+//     @include radius_and_transform();
+// }

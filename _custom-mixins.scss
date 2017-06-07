@@ -1,0 +1,70 @@
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        // 1
+        display: table;
+        // 2
+   
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin vendor-prefixes($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+}
+
+@mixin transform($transform) {
+    transform: $transform;
+    @include vendor-prefixes(transform, $transform);
+}
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+@mixin radius_and_transform() {
+    @include border-radius(random(30) + 50 + % random(30) + 50 + % random(30) + 50 + % random(30) + 50 + %);
+    @include transform(random(20) - 10 + deg);
+    transition: all 1s;
+}
+
+@mixin cicada($parent,$child){
+	.#{$parent}{
+		&:nth-child(2n+1) .#{$child} {
+			@include radius_and_transform();
+			&:hover {
+				@include radius_and_transform();
+			}
+		}
+		&:nth-child(3n+2) .#{$child} {
+			@include radius_and_transform();
+			&:hover {
+				@include radius_and_transform();
+			}
+		}
+		&:nth-child(5n+3) .#{$child} {
+			@include radius_and_transform();
+			&:hover {
+				@include radius_and_transform();
+			}
+		}
+		&:nth-child(7n+5) .#{$child} {
+			@include radius_and_transform();
+			&:hover {
+				@include radius_and_transform();
+			}
+		}
+		&:nth-child(11n+7) .#{$child} {
+			@include radius_and_transform();
+			&:hover {
+				@include radius_and_transform();
+			}
+		}
+	}
+}
